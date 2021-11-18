@@ -10,7 +10,13 @@ import "./Header.style.scss";
 // firebase
 import { auth } from "../../firebase/Firebase.utils";
 
-const Header = ({ currentUser }) => {
+// reducer
+import { useSelector } from "react-redux";
+
+const Header = () => {
+  // accessing currentUser from userReducer redux
+  const current = useSelector((state) => state.user.currentUser);
+
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -23,7 +29,7 @@ const Header = ({ currentUser }) => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        {currentUser ? (
+        {current ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 // components
@@ -12,35 +12,48 @@ import SignInSignUpPage from "./Pages/SignInSignUpPage/SignInSignUpPage.componen
 import { auth, createUserProfileDocument } from "./firebase/Firebase.utils";
 import { onSnapshot } from "firebase/firestore";
 
+// reducers
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "./Redux/User/User.action";
+
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         onSnapshot(userRef, (snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
+          dispatch(
+            setCurrentUser({
+              id: snapShot.id,
+              ...snapShot.data(),
+            })
+          );
         });
       } else {
-        setCurrentUser(userAuth);
+        dispatch(setCurrentUser(userAuth));
       }
     });
     return () => {
       console.log("Unmounting App");
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
-      <Header currentUser={currentUser} />
+      <Header />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route path="/shop" element={<ShopPage />} />
-        <Route path="/signin" element={<SignInSignUpPage />} />
+        <Route
+          exact
+          path="/signin"
+          element={
+            currentUser ? <Navigate to="/" replace /> : <SignInSignUpPage />
+          }
+        />
 
         <Route
           path="*"
