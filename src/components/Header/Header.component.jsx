@@ -7,6 +7,10 @@ import Logo from "../../assets/logo.png";
 // style
 import "./Header.style.scss";
 
+// cart
+import CartIcon from "../CartIcon/CartIcon.component";
+import CartDropdown from "../CartDropdown/CartDropdown.component";
+
 // firebase
 import { auth } from "../../firebase/Firebase.utils";
 
@@ -14,8 +18,8 @@ import { auth } from "../../firebase/Firebase.utils";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  // accessing currentUser from userReducer redux
-  const current = useSelector((state) => state.user.currentUser);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const hidden = useSelector((state) => state.cart.hidden);
 
   return (
     <div className="header">
@@ -29,7 +33,7 @@ const Header = () => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        {current ? (
+        {currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
@@ -38,7 +42,9 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };
