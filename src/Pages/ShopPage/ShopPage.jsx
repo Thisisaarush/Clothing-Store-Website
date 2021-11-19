@@ -1,19 +1,10 @@
-import React, { useState } from "react";
-
-// data
-import ShopData from "./ShopData";
-
-// components
-import CollectionContainer from "../../components/CollectionContainer/CollectionContainer.component";
+import React from "react";
+import { Outlet } from "react-router-dom";
 
 const ShopPage = () => {
-  const [collections] = useState(ShopData);
-
   return (
     <div className="shop-page">
-      {collections.map(({ id, ...otherCollectionProps }) => (
-        <CollectionContainer key={id} {...otherCollectionProps} />
-      ))}
+      <Outlet />
     </div>
   );
 };

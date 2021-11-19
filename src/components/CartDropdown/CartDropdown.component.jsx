@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // style
 import "./CartDropdown.style.scss";
@@ -10,19 +11,29 @@ import CustomButton from "../CustomButton/CustomButton";
 import CartItem from "../CartItem/CartItem.component";
 
 // redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { ToggleCartHidden } from "../../Redux/Cart/Cart.action";
 
 const CartDropdown = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))}
+        {cartItems.length ? (
+          cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} item={cartItem} />
+          ))
+        ) : (
+          <span className="empty-message">Your Cart is Empty</span>
+        )}
       </div>
-      <CustomButton>GO TO CHECKOUT</CustomButton>
+      <Link to="/checkout" className="checkout-button">
+        <CustomButton onClick={() => dispatch(ToggleCartHidden())}>
+          GO TO CHECKOUT
+        </CustomButton>
+      </Link>
     </div>
   );
 };

@@ -19,9 +19,17 @@
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: scroll;
+    align-items: center;
+
+    .empty-message {
+      font-size: 18px;
+      margin-top: 50px;
+    }
   }
 
-  button {
+  .checkout-button {
+    display: flex;
+    justify-content: center;
     margin-top: auto;
   }
 }
