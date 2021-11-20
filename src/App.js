@@ -10,6 +10,7 @@ import SignInSignUpPage from "./Pages/SignInSignUpPage/SignInSignUpPage.componen
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 import CollectionsOverview from "./components/CollectionsOverview/CollectionsOverview.component";
 import CollectionPage from "./Pages/CollectionPage/CollectionPage.component";
+import ContactPage from "./Pages/ContactPage/ContactPage";
 
 // firebase
 import { auth, createUserProfileDocument } from "./firebase/Firebase.utils";
@@ -49,6 +50,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
+        <Route exact path="/contact" element={<ContactPage />} />
         <Route path="/shop" element={<ShopPage />}>
           <Route path="" element={<CollectionsOverview />} />
           <Route path=":collectionId" element={<CollectionPage />} />
