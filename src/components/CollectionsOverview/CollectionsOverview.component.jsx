@@ -11,10 +11,11 @@ import { useSelector } from "react-redux";
 
 const CollectionsOverview = () => {
   const collections = useSelector((state) => state.shop.collections);
+  const selectedCollections = Object.keys(collections).map(key => collections[key]); 
 
   return (
     <div className="collections-overview">
-      {collections.map(({ id, ...otherCollectionProps }) => (
+      {selectedCollections.map(({ id, ...otherCollectionProps }) => (
         <CollectionContainer key={id} {...otherCollectionProps} />
       ))}
     </div>
