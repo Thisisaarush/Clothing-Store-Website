@@ -1,6 +1,6 @@
 # Project Live Site
 
-#### [ClothingStore](https://aarushclothings.netlify.app/)
+#### [ClothingStore-Website](https://thisisaarush.github.io/Clothing-Store-Website/)
 
 ## ScreenShots
 
