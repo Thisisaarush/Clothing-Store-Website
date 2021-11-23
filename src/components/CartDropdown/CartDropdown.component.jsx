@@ -29,7 +29,7 @@ const CartDropdown = () => {
           <span className="empty-message">Your Cart is Empty</span>
         )}
       </div>
-      <Link to="/checkout" className="checkout-button">
+      <Link to="/Clothing-Store-Website/checkout" className="checkout-button">
         <CustomButton onClick={() => dispatch(ToggleCartHidden())}>
           GO TO CHECKOUT
         </CustomButton>

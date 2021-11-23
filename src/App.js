@@ -14,10 +14,7 @@ import ContactPage from "./Pages/ContactPage/ContactPage";
 import Footer from "./components/Footer/Footer.component";
 
 // firebase
-import {
-  auth,
-  createUserProfileDocument,
-} from "./firebase/Firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/Firebase.utils";
 import { onSnapshot } from "firebase/firestore";
 
 // reducers
@@ -53,20 +50,32 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Homepage />} />
-        <Route exact path="/contact" element={<ContactPage />} />
-        <Route path="/shop" element={<ShopPage />}>
+        <Route exact path="/Clothing-Store-Website" element={<Homepage />} />
+        <Route
+          exact
+          path="/Clothing-Store-Website/contact"
+          element={<ContactPage />}
+        />
+        <Route path="/Clothing-Store-Website/shop" element={<ShopPage />}>
           <Route path="" element={<CollectionsOverview />} />
           <Route path=":collectionId" element={<CollectionPage />} />
         </Route>
         <Route
           exact
-          path="/signin"
+          path="/Clothing-Store-Website/signin"
           element={
-            currentUser ? <Navigate to="/" replace /> : <SignInSignUpPage />
+            currentUser ? (
+              <Navigate to="/Clothing-Store-Website" replace />
+            ) : (
+              <SignInSignUpPage />
+            )
           }
         />
-        <Route exact path="/checkout" element={<CheckoutPage />} />
+        <Route
+          exact
+          path="/Clothing-Store-Website/checkout"
+          element={<CheckoutPage />}
+        />
 
         <Route
           path="*"
