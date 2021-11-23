@@ -11,9 +11,14 @@ import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 import CollectionsOverview from "./components/CollectionsOverview/CollectionsOverview.component";
 import CollectionPage from "./Pages/CollectionPage/CollectionPage.component";
 import ContactPage from "./Pages/ContactPage/ContactPage";
+import Footer from "./components/Footer/Footer.component";
 
 // firebase
-import { auth, createUserProfileDocument } from "./firebase/Firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+  // addCollectionAndDocuments,
+} from "./firebase/Firebase.utils";
 import { onSnapshot } from "firebase/firestore";
 
 // reducers
@@ -25,7 +30,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    auth.onAuthStateChanged(async (userAuth) => {
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         onSnapshot(userRef, (snapShot) => {
@@ -36,12 +41,12 @@ function App() {
             })
           );
         });
-      } else {
-        dispatch(setCurrentUser(userAuth));
       }
+      dispatch(setCurrentUser(userAuth));
     });
     return () => {
       console.log("Unmounting App");
+      unsubscribeFromAuth();
     };
   }, [dispatch]);
 
@@ -81,6 +86,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 }

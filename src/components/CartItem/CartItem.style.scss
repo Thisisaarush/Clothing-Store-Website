@@ -21,3 +21,11 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cart-item {
+    img{
+      width: 25%;
+    }
+  }   
+}

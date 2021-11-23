@@ -13,3 +13,9 @@
     align-items: center;
   }
 }
+@media screen and (max-width: 600px) {
+  .sign-in {
+    width: 90%;
+    margin-top: 30px;
+  }
+}

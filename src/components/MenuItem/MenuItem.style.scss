@@ -38,6 +38,7 @@
     background-color: white;
     opacity: 0.8;
     position: absolute;
+    border-radius: 10px;
 
     .title {
       font-weight: bold;
@@ -64,5 +65,11 @@
     & .content {
       opacity: 0.9;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu-item {
+    width: 95%;
   }
 }

@@ -34,4 +34,16 @@
       cursor: pointer;
     }
   }
+
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    width: 100vw;
+    padding: 0;
+    
+    .options {
+      width: 100%;
+    }
+  }
 }

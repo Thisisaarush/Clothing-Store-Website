@@ -6,3 +6,12 @@
   align-items: flex-end;
   flex-direction: row-reverse;
 }
+
+@media screen and (max-width: 600px) {
+  .sign-in-and-sign-up {
+    width: 100vw;   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -33,3 +33,10 @@
     margin-top: auto;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cart-dropdown {
+    max-width: 270px;
+    max-height: 400px
+  }
+}

@@ -36,3 +36,23 @@
     color: red;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .checkout-page {
+    width: 90%;
+
+    .checkout-header {
+      .header-block {
+        &:last-child {
+          width: 10%;
+        }
+      }
+    }
+    .total {
+      font-size: 30px;
+    }
+    .test-warning {
+      font-size: 18px;
+    }
+  }   
+}

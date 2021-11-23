@@ -40,3 +40,18 @@
     cursor: pointer;
   }
 }
+@media screen and (max-width: 600px) {
+  .checkout-item {
+    font-size: 18px;
+
+    .image-container {
+      padding-right: 20px;
+    }
+    .name,.quantity,.price {
+      width: 25%;
+    }
+    .quantity {
+      padding-left: 10px;
+    }
+  }   
+}

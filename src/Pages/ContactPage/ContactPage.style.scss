@@ -32,3 +32,18 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .contact-container {
+    width: 95%;
+  
+    a {
+      .name {
+        font-size: 18px;
+      }
+      .profile-image {
+        width: 300px;
+      }
+    }
+  }
+}

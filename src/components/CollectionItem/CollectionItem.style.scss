@@ -21,6 +21,7 @@
     position: absolute;
     top: 255px;
     display: none;
+    border: none;
   }
 
   &:hover {
@@ -49,4 +50,15 @@
       width: 10%;
     }
   }
+}
+@media screen and (max-width: 600px) {
+  .collection-item {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+
+    .collection-footer {
+      font-size: 22px;
+    }
+  }   
 }
