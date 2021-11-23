@@ -17,7 +17,6 @@ import Footer from "./components/Footer/Footer.component";
 import {
   auth,
   createUserProfileDocument,
-  // addCollectionAndDocuments,
 } from "./firebase/Firebase.utils";
 import { onSnapshot } from "firebase/firestore";
 

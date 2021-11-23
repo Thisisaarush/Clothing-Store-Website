@@ -1,6 +1,6 @@
 # Project Live Site
 
-#### [ClothingStore](https://aarush-clothing-store.herokuapp.com/)
+#### [ClothingStore](https://aarushclothings.netlify.app/)
 
 ## ScreenShots
 
